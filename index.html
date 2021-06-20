@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/357bf1e2c0.js" crossorigin="anonymous"></script>
+    <title>To-Do List</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+        <h1>TO-DO List</h1>
+        <div class="add_task">
+            <input type="text" class="input_task" placeholder="Your task for today is ...">
+            <button class="btn_task">Add</button>
+        </div>
+        </header>
+        <section class="task_list">      
+            <h2>Your Tasks :</h2>
+            <p class="p_warning">No tasks in the list...</p>
+            <ul>
+               
+                
+            </ul>
+        </section>
+        
+    </div>
+    <section class="editor hide">
+    <div class="container edit_task_menu ">
+        <h2>Edit your task :</h2>
+        <input type="text" class="edit_task_input" placeholder="Your task for today is ...">
+        <p class="edit_warning hide">Write your task....</p>
+        <div class="edit_buttons">
+        <button class="edit_submit_btn">Submit</button>
+        <button class="edit_cancel_btn">Cancel</button>
+        </div>
+    </div>
+    </section>
+    <footer></footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
