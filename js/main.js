@@ -3,11 +3,12 @@ const taskInput = document.querySelector('.input_task');
 const ulList = document.querySelector('.task_list > ul');
 const warning = document.querySelector('.task_list > .p_warning');
 
-const editWindow = document.querySelector('.editor');
-const editInput = document.querySelector('.edit_task_input');
-const editSubmit = document.querySelector('.edit_submit_btn');
-const editCancel = document.querySelector('.edit_cancel_btn');
-const editWarning = document.querySelector('.edit_warning');
+const PopUpWindow = document.querySelector('.editor');
+const PopUpInput = document.querySelector('.edit_task_input');
+const PopUpSubmit = document.querySelector('.edit_submit_btn');
+const PopUpCancel = document.querySelector('.edit_cancel_btn');
+const PopUpWarning = document.querySelector('.edit_warning');
+const PopUpTextInfo = document.querySelector('.edit_task_menu > h2')
 
 const regexp = /[0-9]/g
 
@@ -29,34 +30,34 @@ const check = (x) => {
     if(pElements[indexLi].style.textDecoration.includes('line-through')) {
         pElements[indexLi].style.textDecoration = '';
         checkElements[indexLi].style.color = '';
-        editWindow.classList.add('hide');
+        PopUpWindow.classList.add('hide');
     } else {
     pElements[indexLi].style.textDecoration = 'line-through';
     checkElements[indexLi].style.color = 'grey';
-    editWindow.classList.add('hide');
+    PopUpWindow.classList.add('hide');
     }
 }
 
 const edit = (x) =>{
 
     const closeEdit = () =>{
-        editWindow.classList.add('hide');
-        editWarning.classList.add('hide');
-        editCancel.removeEventListener('click',closeEdit);
-        editSubmit.removeEventListener('click',submitEdit);
+        PopUpWindow.classList.add('hide');
+        PopUpWarning.classList.add('hide');
+        PopUpCancel.removeEventListener('click',closeEdit);
+        PopUpSubmit.removeEventListener('click',submitEdit);
         taskInput.focus();
     }
     const submitEdit = () =>{
-        if (editInput.value == '' ){
-        editWarning.classList.remove('hide');
-        editWarning.textContent = ('Write your task....');
+        if (PopUpInput.value == '' ){
+        PopUpWarning.classList.remove('hide');
+        PopUpWarning.textContent = ('Write your task....');
         } else {
-        editWarning.classList.add('hide');
-        pElements[indexLi].innerHTML = editInput.value;
-        editWindow.classList.add('hide');
-        editCancel.removeEventListener('click',closeEdit);
-        editSubmit.removeEventListener('click',submitEdit);
-        editInput.removeEventListener('keyup',editInputEnter);
+        PopUpWarning.classList.add('hide');
+        pElements[indexLi].innerHTML = PopUpInput.value;
+        PopUpWindow.classList.add('hide');
+        PopUpCancel.removeEventListener('click',closeEdit);
+        PopUpSubmit.removeEventListener('click',submitEdit);
+        PopUpInput.removeEventListener('keyup',editInputEnter);
         taskInput.focus();
         }
     }
@@ -66,26 +67,52 @@ const edit = (x) =>{
         }
     }
     let indexLi = Number(x.target.closest('button').classList[1].split('').filter(isNumber).join(''));
-    editWindow.classList.remove('hide'); 
-    editInput.value = pElements[indexLi].innerHTML;
-    editInput.focus();
-    editInput.addEventListener('keyup',editInputEnter);
-    editCancel.addEventListener('click',closeEdit);
-    editSubmit.addEventListener('click',submitEdit);
+    PopUpWindow.classList.remove('hide'); 
+    PopUpTextInfo.innerHTML = 'Edit your task: ';
+    PopUpInput.classList.remove('hide');
+    PopUpInput.value = pElements[indexLi].innerHTML;
+    PopUpInput.focus();
+    PopUpInput.addEventListener('keyup',editInputEnter);
+    PopUpCancel.addEventListener('click',closeEdit);
+    PopUpSubmit.addEventListener('click',submitEdit);
 }
 
 const remove = (x) => {
+    const closeEdit = () =>{
+        PopUpWindow.classList.add('hide');
+        PopUpWarning.classList.add('hide');
+        PopUpCancel.removeEventListener('click',closeEdit);
+        PopUpSubmit.removeEventListener('click',submitEdit);
+        PopUpSubmit.focus();
+    }
+    const submitEdit = () =>{
+        ulList.removeChild(liList[indexLi]);
+        PopUpWindow.classList.add('hide');
+        PopUpCancel.removeEventListener('click',closeEdit);
+        PopUpSubmit.removeEventListener('click',submitEdit);
+        PopUpSubmit.focus();
+                    
+        let liExist = ulList.querySelector('li');
+        if(liExist === null) {
+
+            warning.classList.remove('hide');
+            warning.textContent = ('No tasks in the list...');
+
+            } else {
+
+                warning.classList.add('hide');
+            }
+    }
     let indexLi = Number(x.target.closest('button').classList[1].split('').filter(isNumber).join(''));
-    ulList.removeChild(liList[indexLi]);
-    editWindow.classList.add('hide');
-    let liExist = ulList.querySelector('li');
-    console.log(liExist);
-    if(liExist === null) {
-    warning.classList.remove('hide');
-    warning.textContent = ('No tasks in the list...');
-} else {
-    warning.classList.add('hide');
-}
+    // ulList.removeChild(liList[indexLi]);
+    PopUpWindow.classList.remove('hide');
+    PopUpTextInfo.innerHTML = 'Do you want to delete your task?';
+    PopUpInput.classList.add('hide');
+    
+
+    PopUpCancel.addEventListener('click',closeEdit);
+    PopUpSubmit.addEventListener('click',submitEdit);
+
 }
 
 const addLi = () =>{

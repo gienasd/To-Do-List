@@ -21,7 +21,7 @@ header {
     flex-direction: column;
     justify-content: center;
     color: white;
-    background-image: linear-gradient(to bottom right, rgb(38, 69, 246), rgb(27, 170, 236));
+    background-image: linear-gradient(to bottom right, rgb(51, 131, 88), rgb(27, 236, 225));
 }
 
 header>h1 {
@@ -58,7 +58,7 @@ header>h1 {
 }
 
 .btn_task:hover {
-    background: grey;
+    background: rgb(112, 110, 110);
     color: white;
     box-shadow: 0px 0px 5px white;
 }
@@ -136,7 +136,7 @@ li>p {
     position: fixed;
     bottom:40%;
     color:white;
-    background-color:rgb(88, 139, 233);
+    background-color:rgb(106, 163, 159);
     width:60%;
     box-shadow: 3px 3px 10px rgb(77, 74, 74);
 }
@@ -165,7 +165,7 @@ li>p {
     font-weight: bold;
 }
 .edit_submit_btn:hover, .edit_cancel_btn:hover {
-    background: rgb(95, 96, 97);
+    background: rgb(112, 110, 110);
     color: white;
     box-shadow: 0px 0px 5px white;
 }
