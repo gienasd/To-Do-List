@@ -129,7 +129,7 @@ li>p {
 .btn_remove:hover{
     box-shadow: 0px 0px 5px rgb(255, 255, 255);
 }
-.edit_task_menu {
+.popup_menu {
     display:flex;
     flex-direction: column;
     z-index: 1;
@@ -140,7 +140,7 @@ li>p {
     width:60%;
     box-shadow: 3px 3px 10px rgb(77, 74, 74);
 }
-.edit_task_menu > .edit_task_input{
+.popup_menu > .popup_input{
     align-self: center;
     width:80%;
     padding: 7px;
@@ -148,14 +148,14 @@ li>p {
     border: none;
     margin-bottom: 1em;
 }
-.edit_task_menu > .edit_task_input:focus{
+.popup_menu > .popup_input:focus{
     outline: none;
 }
-.edit_buttons{
+.popup_buttons{
     align-self: center;
     margin-bottom: 1em;
 }
-.edit_submit_btn, .edit_cancel_btn{
+.popup_submit_btn, .popup_cancel_btn{
     margin-right: 1em;
     background: white;
     border: none;
@@ -164,12 +164,12 @@ li>p {
     cursor: pointer;
     font-weight: bold;
 }
-.edit_submit_btn:hover, .edit_cancel_btn:hover {
+.popup_submit_btn:hover, .popup_cancel_btn:hover {
     background: rgb(95, 96, 97);
     color: white;
     box-shadow: 0px 0px 5px white;
 }
-.editor{
+.popup{
     position:fixed;
     display:flex;
     justify-content: center;
@@ -177,7 +177,7 @@ li>p {
     width:100%;
     background-color: rgba(0, 0, 0, 0.383);
 }
-.edit_task_menu>p {
+.popup_menu>p {
     z-index: 1;
     text-align: center;
     color: rgba(255, 255, 255, 0.863);
