@@ -12,12 +12,15 @@ const PopUpTextInfo = document.querySelector('.edit_task_menu > h2')
 
 const regexp = /[0-9]/g
 
-let $listLength = 0; // counts li in ul
+myStorage = window.localStorage;
+
+let $listLength = myStorage.liStorageId || 0; // counts li in ul
 let liList = []; // array of li elements
 let pElements = []; // p elements of li
 let checkElements = []; // check button elements of li
 let editElements = []; // edit button elements of li
 let removeElements = []; // remove button elements of li
+
 
 const isNumber = (number) =>{
     if(number.match(regexp))
@@ -54,6 +57,7 @@ const edit = (x) =>{
         } else {
         PopUpWarning.classList.add('hide');
         pElements[indexLi].innerHTML = PopUpInput.value;
+        myStorage.setItem(`${indexLi}li`, PopUpInput.value);
         PopUpWindow.classList.add('hide');
         PopUpCancel.removeEventListener('click',closeEdit);
         PopUpSubmit.removeEventListener('click',submitEdit);
@@ -87,6 +91,8 @@ const remove = (x) => {
     }
     const submitEdit = () =>{
         ulList.removeChild(liList[indexLi]);
+        myStorage.removeItem(`${indexLi}li`);
+
         PopUpWindow.classList.add('hide');
         PopUpCancel.removeEventListener('click',closeEdit);
         PopUpSubmit.removeEventListener('click',submitEdit);
@@ -97,6 +103,8 @@ const remove = (x) => {
 
             warning.classList.remove('hide');
             warning.textContent = ('No tasks in the list...');
+            myStorage.clear();
+            $listLength=0;
 
             } else {
 
@@ -140,6 +148,11 @@ const addLi = () =>{
     removeElements[$listLength] =  liList[$listLength].querySelector(`.task_remove${$listLength}`);
 
     pElements[$listLength].textContent = taskInput.value;
+
+    myStorage.liStorageId = $listLength; 
+    myStorage.setItem(`${$listLength}li`, taskInput.value);
+
+
     taskInput.value = '';  
 
     removeElements[$listLength].addEventListener('click',remove);
@@ -157,3 +170,47 @@ const taskInputEnter = (event) => {
 taskInput.focus();
 addTaskButton.addEventListener('click',addLi);
 taskInput.addEventListener('keyup',taskInputEnter);
+
+for(let i=0;i<=myStorage.liStorageId;i++){
+
+    if(myStorage.getItem(`${i}li`) != null){
+
+    liList[i] = document.createElement('li');
+    liList[i].innerHTML = `
+    <p class="task${i}">Test task</p>
+    <div class="task_buttons">
+                        <button class="btn_check task_check${i}"><i class="fas fa-check"></i></button>
+                        <button class="btn_edit task_edit${i}">EDIT</button>
+                        <button class="btn_remove task_remove${i}"><i class="fas fa-times"></i></button>
+    </div>
+    `;
+
+    ulList.appendChild(liList[i]);
+
+    pElements[i] =  liList[i].querySelector(`.task${i}`);
+    checkElements[i] =  liList[i].querySelector(`.task_check${i}`);
+    editElements[i] =  liList[i].querySelector(`.task_edit${i}`);
+    removeElements[i] =  liList[i].querySelector(`.task_remove${i}`);
+
+    pElements[i].textContent = myStorage.getItem(`${i}li`);
+
+    removeElements[i].addEventListener('click',remove);
+    checkElements[i].addEventListener('click',check);
+    editElements[i].addEventListener('click',edit);
+
+    }
+    if (i == myStorage.liStorageId ){
+        $listLength++;
+    }
+}
+
+let liExist = ulList.querySelector('li');
+        if(liExist === null) {
+
+            warning.classList.remove('hide');
+            warning.textContent = ('No tasks in the list...');
+
+            } else {
+
+                warning.classList.add('hide');
+}
