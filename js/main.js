@@ -10,7 +10,6 @@ const PopUpCancel = document.querySelector('.edit_cancel_btn');
 const PopUpWarning = document.querySelector('.edit_warning');
 const PopUpTextInfo = document.querySelector('.edit_task_menu > h2')
 
-const regexp = /[0-9]/g
 
 myStorage = window.localStorage;
 
