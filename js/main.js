@@ -5,15 +5,17 @@ const addTaskButton = document.querySelector('.add-task-block__btn');
 const taskList = document.querySelector('.task-list');
 
 let taskId = 0;
-let task = [];
+let taskArray = [];
 
 const addTask = () => {
-
-    task[taskId] = new Task(taskId,addTaskInput.value,taskList,task);
+    taskArray[taskId] = new Task(taskId,addTaskInput.value,taskList,taskArray);
     addTaskInput.value = '';
     taskId++;
 }
 
+addTaskInput.focus();
+addTaskButton.addEventListener('click',addTask);
 
-addTaskButton.addEventListener('click',addTask)
-
+addTaskInput.addEventListener('keydown', event =>{
+    event.key == 'Enter' ? addTask() : null;
+});

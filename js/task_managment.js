@@ -7,10 +7,9 @@ export default class Task{
         this.id = id;
         this.value = value;
         this.action ='';
-        // this.submit ='';
-        // this.cancel ='';
 
         // creating li element
+
         this.item = document.createElement('li');
         this.item.classList.add(`task-list__item`);
         this.item.classList.add(`task${this.id}`);
@@ -31,7 +30,7 @@ export default class Task{
 
         this.item.appendChild(this.itemDiv)
 
-        // creating buttons insite div element
+        // creating buttons inside div element
 
         // check button 
 
@@ -71,11 +70,14 @@ export default class Task{
 
         // adding listeners for buttons
 
-        this.itemCheck.addEventListener('click', (event) => util.check(event,this));
-        this.itemEdit.addEventListener('click', (event) => util.edit(event,this));
-        this.itemRemove.addEventListener('click', (event) => util.remove(event,this));
+        this.itemCheck.addEventListener('click', event => util.check(this));
+        this.itemEdit.addEventListener('click', event => util.edit(this));
+        this.itemRemove.addEventListener('click', event => util.remove(this));
         
     }
+
+    // clearing object from global array
+
     taskArrayClear = (id) =>{
         this.taskArray[id] = '';
     }
