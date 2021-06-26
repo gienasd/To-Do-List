@@ -4,8 +4,10 @@ What i want to do in the new version of my to-do list.
 
 I.Code improvements:
 
-1.Learn and add BEM methodology
-2.Learn SASS and rewrite css in SCSS
+1.Learn and add BEM methodology - done
+
+2.Learn SASS and rewrite css in SCSS - done
+
 3.Rewrite JS Code into some modules to improve future development
 
 II.Later on add new features:
