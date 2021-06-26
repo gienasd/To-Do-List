@@ -18,6 +18,7 @@ export function edit(task){
 
 const submitEdit = task => {
     task.itemText.textContent = document.querySelector('.popup__input').value;
+    window.localStorage.setItem(`Item${task.id}`,document.querySelector('.popup__input').value);
 }
 
 // remove button logic
@@ -70,15 +71,15 @@ const popupShow = task =>{
         // popup submit util function
 
         const popupSubmit = () =>{
-            
-            if(task.action == 'edit' && keydown.value == ''){
+
+            if(task.action == 'edit' && popupInput.value == ''){
                 document.querySelector('.popup__warning').classList.remove('is-hidden');
             } else {
                 popupHide();
                 checkSubmitAction(task);
                 submit.removeEventListener('click', popupSubmit);
                 cancel.removeEventListener('click', popupCancel);
-                keydown.removeEventListener('keydown', checkEnter);
+                popupInput.removeEventListener('keydown', checkEnter);
             }
         }
 
@@ -88,16 +89,16 @@ const popupShow = task =>{
             popupHide();
             submit.removeEventListener('click', popupSubmit);
             cancel.removeEventListener('click', popupCancel);
-            keydown.removeEventListener('keydown', checkEnter);
+            popupInput.removeEventListener('keydown', checkEnter);
         }
 
     const submit = document.querySelector('.popup__submit-btn');
     const cancel = document.querySelector('.popup__cancel-btn');
-    const keydown = document.querySelector('.popup__input');
+    const popupInput = document.querySelector('.popup__input');
 
     document.querySelector('.popup__warning').classList.add('is-hidden');
 
-    keydown.addEventListener('keydown', checkEnter);
+    popupInput.addEventListener('keydown', checkEnter);
     submit.addEventListener('click', popupSubmit);
     cancel.addEventListener('click', popupCancel);
     
