@@ -9,32 +9,61 @@ export function edit(event,Task){
 // remove button logic
 
 export function remove(event,Task){
-
     Task.action = 'remove';
-    popupShow(Task);
-
-      
+    popupShow(Task);   
 }
 
-const submitRemove = (event,Task) => {
+const submitRemove = Task => {
+    console.log(Task);
     const taskList = document.querySelector('ul');
     const removeTask = Task.item;
     taskList.removeChild(removeTask);
     Task.taskArrayClear(Task.id); 
 }
 
+// check popup submit action function
+
+const checkSubmitAction = Task => {
+
+    switch(Task.action){
+
+        case 'remove':
+            submitRemove(Task);
+            break;
+            
+        default:
+            console.log(error);
+    }
+}
 // popup show util function
 
 const popupShow = Task =>{
+
+        // popup submit util function
+
+        const popupSubmit = () =>{
+            console.log(`submit`);
+            popupHide();
+            checkSubmitAction(Task);
+            submit.removeEventListener('click', popupSubmit);
+            cancel.removeEventListener('click', popupCancel);
+        }
+
+         // popup cancel util function
+
+        const popupCancel = () =>{
+            console.log(`cancel`);
+            popupHide();
+            submit.removeEventListener('click', popupSubmit);
+            cancel.removeEventListener('click', popupCancel);
+        }
+
     const submit = document.querySelector('.popup__submit-btn');
     const cancel = document.querySelector('.popup__cancel-btn');
 
-    cancel.removeEventListener('click',event => popupCancel(event,Task));
+    submit.addEventListener('click', popupSubmit);
+    cancel.addEventListener('click', popupCancel);
 
-    submit.addEventListener('click',event => popupSubmit(event,Task),{once:true});
-    cancel.addEventListener('click',event => popupCancel(event,Task),{once:true});
-
-    
     const show = document.querySelector('.popup');
     show.classList.remove('is-hidden');
 }
@@ -44,19 +73,4 @@ const popupShow = Task =>{
 const popupHide = () =>{
     const show = document.querySelector('.popup');
     show.classList.add('is-hidden');
-}
-
- // popup submit util function
-
-const popupSubmit = (event,Task) =>{
-    console.log(`submit`);
-    popupHide();
-    submitRemove(event,Task);
-}
-
- // popup cancel util function
-
-const popupCancel = (event,Task) =>{
-    console.log(`cancel`);
-    popupHide();
 }
