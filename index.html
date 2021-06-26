@@ -6,39 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/357bf1e2c0.js" crossorigin="anonymous"></script>
+    <script type="module" src="js/main.js" ></script>
     <title>To-Do List</title>
 </head>
 <body>
-    <div class="container">
-        <header>
-        <h1>TO-DO List</h1>
-        <div class="add_task">
-            <input type="text" class="input_task" placeholder="Your task for today is ...">
-            <button class="btn_task">Add</button>
+    
+    <section class="main-app container">
+
+        <div class="add-task-block">
+            <h1 class="add-task-block__title">TO-DO List</h1>
+            <div class="add-task-block__form" action="/">
+                <input type="text" class="add-task-block__input" placeholder="Your task for today is ...">
+                <button class="btn add-task-block__btn">Add</button>
+            </div>
         </div>
-        </header>
-        <section class="task_list">      
-            <h2>Your Tasks :</h2>
-            <p class="p_warning">No tasks in the list...</p>
-            <ul>
-               
-                
-            </ul>
-        </section>
-        
-    </div>
-    <section class="editor hide">
-    <div class="container edit_task_menu ">
-        <h2></h2>
-        <input type="text" class="edit_task_input hide" placeholder="Your task for today is ...">
-        <p class="edit_warning hide">Write your task....</p>
-        <div class="edit_buttons">
-        <button class="edit_submit_btn">Submit</button>
-        <button class="edit_cancel_btn">Cancel</button>
+
+        <div class="show-task-block">      
+            <h2 class="show-task-block__title">Your Tasks :</h2>
+            <p class="show-task-block__warning">No tasks in the list...</p>
+
+            <ul class="task-list"></ul>
         </div>
-    </div>
+
     </section>
-    <footer></footer>
-    <script src="js/main.js"></script>
+
+
+    <section class="popup is-hidden">
+        <div class="popup__box container">
+        <h2 class="popup__title">Test Title</h2>
+        <input type="text" class="popup__input is-hidden" placeholder="Edit your task...">
+        <p class="popup__warning is-hidden">Write your task....</p>
+
+        <div class="popup__buttons">
+        <button class="popup__submit-btn btn">Submit</button>
+        <button class="popup__cancel-btn btn">Cancel</button>
+        </div>
+        </div>
+    </section>
+
+    <footer class="footer"></footer>
+    
 </body>
 </html>

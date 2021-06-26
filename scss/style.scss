@@ -1,0 +1,195 @@
+//  ------------------ variables ---------------------------------
+
+$primary-color: rgb(61, 61, 255);
+$secondary-color: rgb(121, 160, 235);
+$third-color:rgb(88, 87, 87);
+$list-bg-color:rgb(221, 221, 221);
+
+// --------------------- global --------------------------------
+
+@mixin list-buttons{
+    border:none;
+    background:none;
+    font-size: 1rem;
+    margin:0 0.4rem;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+*{
+    margin:0;
+    padding:0;
+}
+
+.container{
+    margin:auto;
+    width:80%;
+}
+
+.main-app{
+    position:static;
+    box-shadow:3px 3px 5px $third-color;
+}
+
+// --------------------- buttons --------------------
+
+.btn{ 
+    border:none;
+    border-radius:8px;
+    margin:0 1rem;
+    padding:0 1.5rem;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.btn:hover{
+    color:white;
+    background-color: $third-color;
+    box-shadow: 0 0 5px white;
+}
+// ----------- add-task-block --------------------
+
+.add-task-block{
+
+    background-image: linear-gradient(to bottom right, $primary-color,$secondary-color);
+    margin-top:10%;
+
+    &__title{
+        padding: 1rem 0;
+        text-align:center;
+        color:white;
+        font-size: 2rem;
+    }
+
+    &__form{
+        display:flex;
+        justify-content: space-evenly;
+        padding:1rem 1rem 2rem 1rem;
+    }
+
+    &__input{
+        padding:0.5rem;
+        outline:none;
+        border-radius:8px;
+        border:none;
+        width:65%;
+        min-width: 3rem;
+    }
+}
+
+// ---------------- show-task-block --------------
+
+.show-task-block{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:1rem 0;
+
+    &__title{
+        font-size: 1.5rem;
+        padding-bottom: 1rem;
+    }
+
+    &__warning{
+        color:gray;
+        padding-bottom:1rem;
+    }
+}
+.task-list{
+
+    width:90%;
+    list-style: none;
+
+    &__item{
+        background-color: $list-bg-color;
+        display:flex;
+        justify-content: space-between;
+        padding:0.5rem;
+        border-radius: 5px;
+        margin-bottom: 0.5rem;
+    }
+
+    &__text{
+        font-weight: bold;
+    }
+
+    &__btn-check{
+        @include list-buttons();
+        color:rgb(102, 102, 243);
+    }
+
+    &__btn-edit{
+        @include list-buttons();
+        color:rgb(27, 133, 27);
+    }
+
+    &__btn-remove{
+        @include list-buttons();
+        color:red;
+    }
+}
+
+// --------------- popup ----------------
+
+.popup{
+    background-color: rgba(12, 12, 12, 0.4);
+    position: fixed;
+    top:0%;
+    z-index: 1;
+    height:100vh;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    &__box{
+        background-color: $secondary-color;
+        padding:1em;
+        box-shadow: 3px 3px 10px $third-color;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__title{
+        font-size: 1.5rem;
+        padding-bottom:0.5rem;
+        color:white;
+    }
+    &__input{
+        padding:0.5rem;
+        border-radius: 8px;
+        outline: none;
+        border:none;
+        width:50%;
+        margin-bottom: 0.5rem;
+    }
+    &__warning{
+        color:$third-color;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+    &__submit-btn{
+        padding:0.5rem 1rem;
+    }
+    &__cancel-btn{
+        padding:0.5rem 1rem;
+    }
+}
+
+//--------------- footer ---------------------------
+
+.footer {
+    height:10vh;
+}
+
+// ------------- utility classes -----------------
+
+.is-hidden{
+    display:none;
+}
+.is-checked{
+    text-decoration: line-through;
+    color:$primary-color;
+}
+.icon-checked{
+    color:$third-color;
+}
