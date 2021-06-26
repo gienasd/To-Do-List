@@ -6,11 +6,16 @@ export default class Task{
         this.taskArray = taskArray;
         this.id = id;
         this.value = value;
+        this.action ='';
+        // this.submit ='';
+        // this.cancel ='';
+
         // creating li element
         this.item = document.createElement('li');
         this.item.classList.add(`task-list__item`);
         this.item.classList.add(`task${this.id}`);
         taskList.appendChild(this.item);
+
         // creating p element inside li
 
         this.itemText = document.createElement('p');

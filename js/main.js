@@ -12,7 +12,6 @@ const addTask = () => {
     task[taskId] = new Task(taskId,addTaskInput.value,taskList,task);
     addTaskInput.value = '';
     taskId++;
-    console.log(task[taskId-1]);
 }
 
 
