@@ -1,4 +1,4 @@
-import Task from './task_managment.mjs';
+import Task from './task_managment.js';
 
 const addTaskInput = document.querySelector('.add-task-block__input');
 const addTaskButton = document.querySelector('.add-task-block__btn');
@@ -9,9 +9,10 @@ let task = [];
 
 const addTask = () => {
 
-    task[taskId] = new Task(taskId,addTaskInput.value,taskList);
+    task[taskId] = new Task(taskId,addTaskInput.value,taskList,task);
     addTaskInput.value = '';
     taskId++;
+    console.log(task[taskId-1]);
 }
 
 
