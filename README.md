@@ -8,7 +8,9 @@ I.Code improvements:
 
 2.Learn SASS and rewrite css in SCSS - done
 
-3.Rewrite JS Code into some modules to improve future development
+3.Rewrite JS Code into some modules to improve future development - done
+
+3*. Media Queries to improve responsivness and add localStorage feature
 
 II.Later on add new features:
 
