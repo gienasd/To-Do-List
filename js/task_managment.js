@@ -76,16 +76,22 @@ export default class Task{
         
     }
 
-    // clearing object from global array
+    // clearing object in global array
 
     taskArrayClear = (id) =>{
 
         this.taskArray[id] = '';
-        
+        window.localStorage.setItem(`Item${id}`,'');
+
         if(this.taskArray.filter(item => item != '').length == 0 ){
+
             const addTaskWarning = document.querySelector('.show-task-block__warning');
             addTaskWarning.classList.remove('is-hidden');
             addTaskWarning.textContent = 'No task in the list...';
+            window.localStorage.clear();
+            
+            for(let i=0;i<this.taskArray.length;this.taskArray.pop()){}
+            
         }
 
     }
